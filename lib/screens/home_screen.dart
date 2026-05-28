@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -155,100 +155,78 @@ class _HomeScreenState extends State<HomeScreen> {
                 SliverPadding(
                   padding: const EdgeInsets.fromLTRB(14, 12, 14, 0),
                   sliver: SliverToBoxAdapter(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: const <BoxShadow>[
-                          BoxShadow(
-                            color: Color(0x50031D33),
-                            blurRadius: 24,
-                            offset: Offset(0, 10),
-                          ),
-                        ],
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: SizedBox(
-                          height: 196,
-                          child: PageView(
-                            controller: _bannerController,
-                            onPageChanged: (int index) {
-                              if (index == 3) {
-                                setState(() {
-                                  _bannerIndex = 0;
-                                });
-                                _bannerPage = 0;
-                                Future<void>.microtask(() {
-                                  if (!mounted || !_bannerController.hasClients) return;
-                                  _bannerController.jumpToPage(0);
-                                });
-                                return;
-                              }
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: SizedBox(
+                        height: 185,
+                        child: PageView(
+                          controller: _bannerController,
+                          onPageChanged: (int index) {
+                            if (index == 3) {
                               setState(() {
-                                _bannerIndex = index;
+                                _bannerIndex = 0;
                               });
-                              _bannerPage = index;
-                            },
-                            children: <Widget>[
-                              _buildBannerCard(
-                                title: AppI18n.t('banner_1_title', isKhmer),
-                                subtitle: AppI18n.t('banner_1_sub', isKhmer),
-                                imageAsset: 'lib/images/img/driving-rules-in-dubai-1.webp',
-                                fallbackAsset: fallbackBanner,
-                              ),
-                              _buildBannerCard(
-                                title: AppI18n.t('banner_2_title', isKhmer),
-                                subtitle: AppI18n.t('banner_2_sub', isKhmer),
-                                imageAsset: 'lib/images/img/images (1).jpg',
-                                fallbackAsset: fallbackBanner,
-                              ),
-                              _buildBannerCard(
-                                title: AppI18n.t('banner_3_title', isKhmer),
-                                subtitle: AppI18n.t('banner_3_sub', isKhmer),
-                                imageAsset: 'lib/images/img/images.jpg',
-                                fallbackAsset: fallbackBanner,
-                              ),
-                              _buildBannerCard(
-                                title: AppI18n.t('banner_1_title', isKhmer),
-                                subtitle: AppI18n.t('banner_1_sub', isKhmer),
-                                imageAsset: 'lib/images/img/driving-rules-in-dubai-1.webp',
-                                fallbackAsset: fallbackBanner,
-                              ),
-                            ],
-                          ),
+                              _bannerPage = 0;
+                              Future<void>.microtask(() {
+                                if (!mounted || !_bannerController.hasClients) return;
+                                _bannerController.jumpToPage(0);
+                              });
+                              return;
+                            }
+                            setState(() {
+                              _bannerIndex = index;
+                            });
+                            _bannerPage = index;
+                          },
+                          children: <Widget>[
+                            _buildBannerCard(
+                              title: AppI18n.t('banner_1_title', isKhmer),
+                              subtitle: AppI18n.t('banner_1_sub', isKhmer),
+                              imageAsset: 'lib/images/img/driving-rules-in-dubai-1.webp',
+                              fallbackAsset: fallbackBanner,
+                            ),
+                            _buildBannerCard(
+                              title: AppI18n.t('banner_2_title', isKhmer),
+                              subtitle: AppI18n.t('banner_2_sub', isKhmer),
+                              imageAsset: 'lib/images/img/images (1).jpg',
+                              fallbackAsset: fallbackBanner,
+                            ),
+                            _buildBannerCard(
+                              title: AppI18n.t('banner_3_title', isKhmer),
+                              subtitle: AppI18n.t('banner_3_sub', isKhmer),
+                              imageAsset: 'lib/images/img/images.jpg',
+                              fallbackAsset: fallbackBanner,
+                            ),
+                            _buildBannerCard(
+                              title: AppI18n.t('banner_1_title', isKhmer),
+                              subtitle: AppI18n.t('banner_1_sub', isKhmer),
+                              imageAsset: 'lib/images/img/driving-rules-in-dubai-1.webp',
+                              fallbackAsset: fallbackBanner,
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
                 ),
                 SliverPadding(
-                  padding: const EdgeInsets.fromLTRB(14, 10, 14, 0),
+                  padding: const EdgeInsets.fromLTRB(14, 8, 14, 0),
                   sliver: SliverToBoxAdapter(
-                    child: Center(
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-                        decoration: BoxDecoration(
-                          color: const Color(0x2AFFFFFF),
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: const Color(0x45FFFFFF)),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: List<Widget>.generate(3, (int index) {
-                            final bool selected = index == _bannerIndex;
-                            return AnimatedContainer(
-                              duration: const Duration(milliseconds: 220),
-                              margin: const EdgeInsets.symmetric(horizontal: 4),
-                              width: selected ? 18 : 8,
-                              height: 8,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                color: selected ? Colors.white : const Color(0x88FFFFFF),
-                              ),
-                            );
-                          }),
-                        ),
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List<Widget>.generate(3, (int index) {
+                        final bool selected = index == _bannerIndex;
+                        return AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          margin: const EdgeInsets.symmetric(horizontal: 4),
+                          width: selected ? 18 : 8,
+                          height: 8,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: selected ? Colors.white : const Color(0x88FFFFFF),
+                          ),
+                        );
+                      }),
                     ),
                   ),
                 ),
@@ -334,99 +312,39 @@ class _HomeScreenState extends State<HomeScreen> {
         Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              begin: Alignment.topLeft,
+              begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: <Color>[
-                Color(0x33001528),
-                Color(0x12001528),
-                Color(0xC8002A46),
+                Color(0x22000000),
+                Color(0xAA003356),
               ],
-              stops: <double>[0.0, 0.45, 1.0],
             ),
           ),
         ),
         Positioned(
           left: 14,
-          top: 12,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(40),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                  color: const Color(0x3EFFFFFF),
-                  borderRadius: BorderRadius.circular(40),
-                  border: Border.all(color: const Color(0x6FFFFFFF)),
-                ),
-                child: const Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Icon(
-                      Icons.auto_awesome_rounded,
-                      size: 14,
-                      color: Colors.white,
-                    ),
-                    SizedBox(width: 5),
-                    Text(
-                      'Featured',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 11,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
+          right: 14,
+          bottom: 16,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 18,
                 ),
               ),
-            ),
-          ),
-        ),
-        Positioned(
-          left: 10,
-          right: 10,
-          bottom: 10,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(14),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-              child: Container(
-                padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
-                decoration: BoxDecoration(
-                  color: const Color(0x2CFFFFFF),
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: const Color(0x6EFFFFFF)),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
-                        fontSize: 16,
-                        height: 1.1,
-                      ),
-                    ),
-                    const SizedBox(height: 3),
-                    Text(
-                      subtitle,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: Color(0xFFF0F8FF),
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                        height: 1.2,
-                      ),
-                    ),
-                  ],
+              const SizedBox(height: 2),
+              Text(
+                subtitle,
+                style: const TextStyle(
+                  color: Color(0xFFE6F5FF),
+                  fontWeight: FontWeight.w500,
                 ),
               ),
-            ),
+            ],
           ),
         ),
       ],
