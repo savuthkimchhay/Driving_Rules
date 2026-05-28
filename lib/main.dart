@@ -8,6 +8,7 @@ Future<void> main() async {
   await SystemChrome.setEnabledSystemUIMode(
     SystemUiMode.manual,
     overlays: <SystemUiOverlay>[SystemUiOverlay.top],
+
   );
   runApp(const DrivingRulesApp());
 }
