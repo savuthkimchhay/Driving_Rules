@@ -12,18 +12,94 @@ class QuestionView extends StatelessWidget {
     required this.currentSelection,
     this.onSelect,
     this.showCorrectAnswer = false,
+    this.questionNumber,
   });
 
   final QuestionItem question;
   final int? currentSelection;
   final ValueChanged<int>? onSelect;
   final bool showCorrectAnswer;
+  final int? questionNumber;
 
   bool get _readOnly => onSelect == null;
+  bool get _isConceptCategory =>
+      question.category == QuestionCategory.general ||
+      question.category == QuestionCategory.technique ||
+      question.category == QuestionCategory.emergency;
 
   @override
   Widget build(BuildContext context) {
     final bool isKhmer = context.watch<AppController>().isKhmer;
+    final bool useConceptStyle = showCorrectAnswer && _readOnly && _isConceptCategory;
+
+    if (useConceptStyle) {
+      return Container(
+        margin: const EdgeInsets.only(bottom: 12),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: const Color(0x293A3A6D),
+          border: Border.all(color: const Color(0x5FA8B8FF)),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(12, 12, 12, 13),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(
+                width: 28,
+                child: Text(
+                  '${questionNumber ?? ''}',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    height: 1,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      question.question,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        height: 1.35,
+                        fontSize: 21,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Container(
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          left: BorderSide(
+                            color: Color(0x73D7DCFF),
+                            width: 1.6,
+                          ),
+                        ),
+                      ),
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        question.correctAnswerText,
+                        style: const TextStyle(
+                          color: Color(0xFFD4DBF0),
+                          fontWeight: FontWeight.w500,
+                          height: 1.35,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
 
     return Card(
       margin: const EdgeInsets.only(bottom: 12),

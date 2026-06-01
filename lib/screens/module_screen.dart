@@ -46,7 +46,12 @@ class _ModuleScreenState extends State<ModuleScreen> {
     final String categoryTitle = AppI18n.categoryTitle(widget.category, isKhmer);
     final bool isSignGridModule = widget.category == QuestionCategory.sign;
     final bool isPriorityListModule = widget.category == QuestionCategory.priority;
-    final bool isVisualModule = isSignGridModule || isPriorityListModule;
+    final bool isConceptListModule =
+        widget.category == QuestionCategory.general ||
+        widget.category == QuestionCategory.technique ||
+        widget.category == QuestionCategory.emergency;
+    final bool isVisualModule =
+        isSignGridModule || isPriorityListModule || isConceptListModule;
 
     return Scaffold(
       appBar: AppBar(
@@ -171,6 +176,7 @@ class _ModuleScreenState extends State<ModuleScreen> {
                                 final QuestionItem question = filtered[index];
                                 return QuestionView(
                                   question: question,
+                                  questionNumber: index + 1,
                                   currentSelection: question.answerIndex,
                                   showCorrectAnswer: true,
                                 );
