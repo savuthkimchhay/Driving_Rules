@@ -34,30 +34,31 @@ class QuestionView extends StatelessWidget {
 
     if (useConceptStyle) {
       return Container(
-        margin: const EdgeInsets.only(bottom: 12),
+        margin: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(14),
           color: const Color(0x293A3A6D),
           border: Border.all(color: const Color(0x5FA8B8FF)),
         ),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(12, 12, 12, 13),
+          padding: const EdgeInsets.fromLTRB(11, 11, 11, 12),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(
-                width: 28,
+                width: 34,
                 child: Text(
                   '${questionNumber ?? ''}',
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 30,
+                    fontSize: 20,
                     height: 1,
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.w400,
                   ),
+                  maxLines: 1,
                 ),
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,28 +68,28 @@ class QuestionView extends StatelessWidget {
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
-                        height: 1.35,
-                        fontSize: 21,
+                        height: 1.3,
+                        fontSize: 16.5,
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 7),
                     Container(
                       decoration: const BoxDecoration(
                         border: Border(
                           left: BorderSide(
                             color: Color(0x73D7DCFF),
-                            width: 1.6,
+                            width: 1.4,
                           ),
                         ),
                       ),
-                      padding: const EdgeInsets.only(left: 10),
+                      padding: const EdgeInsets.only(left: 9),
                       child: Text(
                         question.correctAnswerText,
                         style: const TextStyle(
                           color: Color(0xFFD4DBF0),
                           fontWeight: FontWeight.w500,
-                          height: 1.35,
-                          fontSize: 18,
+                          height: 1.28,
+                          fontSize: 13.8,
                         ),
                       ),
                     ),
